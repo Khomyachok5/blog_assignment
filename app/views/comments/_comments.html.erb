@@ -1,0 +1,29 @@
+<ul class=<%="#{style}"%> >
+  <%-comments.each do |comment| %>
+    <div class="panel panel-default">
+
+      <div class="panel-heading">
+        <h3 class="panel-title">On <%=l comment.created_at, format: :short %>  wrote
+          <%= button_tag "Reply", class: "btn btn-info btn-sm reply_button", type: "button", data: {id: "comment_#{comment.id.to_s}"} %>
+          </h3>
+      </div>
+
+     <div class="panel-body">
+       <%=comment.body%>
+     </div>
+    </div>
+  
+
+    <div id=<%="comment_#{comment.id.to_s}"%> class="ninja">
+      <%= form_for :comment, url: comment_comments_path(comment), class: "form-group" do |f|%>
+        <%= f.label :body, "Comment" %>
+        <%= f.text_area :body, class: 'comment', rows: 5, cols: 115, class: "form-control", placeholder: "Please, enter a   comment" %>
+        <%= f.submit "Post comment", class: "btn btn-default"%>
+      <%end%>
+    </div>
+
+    <%- if comment.comments.any? %>
+      <%= render partial: "comments/comments", locals: {comments: comment.comments, style: "submenu"} %>
+    <%end%>
+  <%end%>
+</ul>
