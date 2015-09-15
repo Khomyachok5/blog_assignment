@@ -1,0 +1,19 @@
+<div>
+  <%= form_for :article, url: url, method: method, html: { class: "form-group"} do |f| %>
+
+    <div class="form-group">
+      <%= f.label :title %><br>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
+   
+    <div class="form-group">
+      <%= f.label :contents %><br>
+      <%= f.text_area :contents, class: "form-control", cols: 40, rows: 30 %>
+    </div> 
+   
+    <div class="form-group">
+      <%= f.submit "Submit", class: "btn btn-default"%>
+      <%= link_to 'Back', articles_path, class: "btn btn-default" %>
+    </div>
+  <% end %>
+</div>
