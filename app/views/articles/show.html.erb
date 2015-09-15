@@ -1,0 +1,10 @@
+<div class="lead">
+  <%=@article.title %>
+</div>
+
+<div class="lead">
+  <%= @article.contents %>
+</div>
+
+<%=link_to("Edit Article", edit_article_path(@article.id), class: "btn btn-default")  %>
+<%=link_to("Delete Article", article_path(@article.id), method: :delete, class: "btn btn-default")  %>
