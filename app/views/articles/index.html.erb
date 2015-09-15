@@ -1,0 +1,7 @@
+<%- @articles_listing.each do |article| %>
+    <h1><%= truncate(article.title, length: 40) %></h1>
+    <%= truncate(article.contents, length: 50) %>
+    <%= link_to 'Read more', article_path(article)%>
+    <p></p>
+    <hr>
+<% end %>
