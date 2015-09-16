@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
 
+  get "/admin", to: "admins#manage", as: :admin
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

@@ -1,0 +1,17 @@
+<p class="lead">Article Management</p>
+<table class="table">
+  <tr>
+    <th>Title</th>
+    <th>Actions</th>
+  </tr>
+  
+  <%- @articles.each do |article| %>
+    <tr>
+      <td> <%=article.title %> </td>
+        <td>
+          <%=link_to("Edit Article", edit_article_path(article.id), class: "btn btn-default")  %>
+          <%=link_to("Delete Article", article_path(article.id), method: :delete, class: "btn btn-default")  %>
+        </td>
+    </tr>
+  <% end %>
+</table>
