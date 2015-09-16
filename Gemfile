@@ -46,9 +46,18 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 #faker gem for generating mock data
 gem 'faker', '~> 1.5.0', group: :development
 
+group :test do
+  gem 'factory_girl_rails', '~> 4.5.0'
+  gem 'shoulda-matchers', '~> 2.8.0'
+  gem 'database_cleaner', '~> 1.5.0'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+
+  #RSpec-rails gem for unit testing with RSpec
+  gem 'rspec-rails', '~> 3.0'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
