@@ -1,3 +1,45 @@
+<p class="lead">User Management</p>
+<table class="table">
+  <tr>
+    <th>Email</th>
+    <th>Role</th>
+    <th>Actions</th>
+  </tr>
+
+    <%- @users.each do |user| %>
+      <tr>
+        <td> <%=user.email %> </td>
+        <td>
+          <%- if user.is_admin %>
+            Administrator
+          <%- else %>
+            Regular User
+          <%end%>
+        </td>
+        <td>
+          <%- if user.is_admin && @admin_count == 1 %>
+            No actions are available
+          <%- elsif user.is_admin && @admin_count > 1%>
+
+            <%= form_for :user, url: invalidate_path(id: user, count: @admin_count), html: { class: "form-group"} do |f| %>
+              <div class="form-group">
+                <%= f.submit "Void administrative permissions", class: "btn btn-default"%>
+              </div>
+            <%end%>
+
+          <%- elsif !user.is_admin%>
+
+            <%= form_for :user, url: promote_path(id: user), html: { class: "form-group"} do |f| %>
+              <div class="form-group">
+                <%= f.submit "Promote to Aministrator", class: "btn btn-default"%>
+              </div>
+            <%end%>
+          <%end%>
+        </td>
+      </tr>
+    <% end %>
+</table>
+
 <p class="lead">Article Management</p>
 <table class="table">
   <tr>
