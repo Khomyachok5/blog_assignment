@@ -29,9 +29,8 @@ Comments
       <%= link_to 'Back', articles_path, class: "btn btn-default" %>
     </div>   
   <% end %>
-
-  <%= render partial: "comments/comments", locals: {comments: @article.comments, style: "media-list"} %>
-
 <%- else %>
   <div class="well well-lg">You need to be signed in to leave comments</div>
 <% end %>
+
+<%= render partial: "comments/comments", locals: {comments: @article.comments, style: "media-list"} %>
