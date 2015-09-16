@@ -1,0 +1,19 @@
+> this is quotes
+
+List:
+
+- item 1
+- item 2
+- item 3
+
+[this is link](http://example.com)
+
+![image](http://placehold.it/350x150)
+
+``` 
+class Cat < Animal 
+  def say 
+    "Meow!" 
+  end 
+end 
+```

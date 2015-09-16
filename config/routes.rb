@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   end
 
   get "/admin", to: "admins#manage", as: :admin
+  post "/invalidate", to: "admins#invalidate", as: "invalidate"
+  post "/promote", to: "admins#promote", as: "promote"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
