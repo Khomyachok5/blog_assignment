@@ -1,4 +1,6 @@
 class ArticlesController < ApplicationController
+  include Permissions
+  before_action :check_privileges, only: [:create, :new, :update, :edit, :destroy]
   before_action :find_article, only: [:update, :edit, :destroy]
 
   def create

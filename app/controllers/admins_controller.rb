@@ -1,4 +1,7 @@
 class AdminsController < ApplicationController
+  include Permissions 
+  before_action :check_privileges, only: [:manage, :invalidate, :promote]
+  before_action :find_user, only: [:invalidate, :promote]
 
   def manage
     @users = User.order(created_at: :asc)
@@ -26,7 +29,7 @@ class AdminsController < ApplicationController
   end
 
   private
-  
+
   def find_user
     @admin = User.find(params[:id])
   end
