@@ -1,4 +1,5 @@
 class Article < ActiveRecord::Base
+  paginates_per 10
   extend FriendlyId
   friendly_id :title, use: :slugged
   include Commentable

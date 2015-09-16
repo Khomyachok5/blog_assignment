@@ -6,6 +6,8 @@ gem 'devise', '~> 3.5.2'
 gem 'redcarpet', '~> 3.3.2'
 #Friendly_id gem for meaningful URLs
 gem 'friendly_id', '~> 5.1.0'
+#Kaminari gem for pagination
+gem 'kaminari', '~> 0.16.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 # Use postgresql as the database for Active Record

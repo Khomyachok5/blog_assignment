@@ -1,7 +1,15 @@
 class ArticlesController < ApplicationController
   include Permissions
   before_action :check_privileges, only: [:create, :new, :update, :edit, :destroy]
-  before_action :find_article, only: [:update, :edit, :destroy]
+  before_action :find_article, only: [:show, :update, :edit, :destroy]
+
+  def index
+    @articles_listing = Article.order(created_at: :asc).page params[:page]
+    @total_pages = @articles_listing.total_pages
+  end
+
+  def new
+  end
 
   def create
     @article = Article.new(article_params)
@@ -13,15 +21,7 @@ class ArticlesController < ApplicationController
     end
   end
 
-  def new
-  end
-
-  def index
-    @articles_listing = Article.order(created_at: :asc)
-  end
-
   def show
-    @article = Article.friendly.find(params[:id])
   end
 
   def edit
@@ -33,7 +33,6 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-
     @article.destroy
     redirect_to root_path
   end
@@ -44,7 +43,8 @@ class ArticlesController < ApplicationController
     params.require(:article).permit(:title, :contents)
   end
 
+
   def find_article
-    @article = Article.find(params[:id])
+    @article = Article.friendly.find(params[:id])
   end
 end
