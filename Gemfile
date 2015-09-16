@@ -8,6 +8,8 @@ gem 'redcarpet', '~> 3.3.2'
 gem 'friendly_id', '~> 5.1.0'
 #Kaminari gem for pagination
 gem 'kaminari', '~> 0.16.3'
+#Figaro gem fr secure storage of configuration data
+gem 'figaro', '~> 1.1.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 # Use postgresql as the database for Active Record
