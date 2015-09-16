@@ -6,22 +6,28 @@
   <%= @article.contents %>
 </div>
 
-<%=link_to("Edit Article", edit_article_path(@article.id), class: "btn btn-default")  %>
-<%=link_to("Delete Article", article_path(@article.id), method: :delete, class: "btn btn-default")  %>
+<%- if current_user.try(:is_admin) %>
+  <%=link_to("Edit Article", edit_article_path(@article.id), class: "btn btn-default")  %>
+  <%=link_to("Delete Article", article_path(@article.id), method: :delete, class: "btn btn-default")  %>
+<% end %>
 
-<%= render partial: "comments/comments", locals: {comments: @article.comments, style: "media-list"} %>
+<%- if user_signed_in? %>
 
+  <%= render partial: "comments/comments", locals: {comments: @article.comments, style: "media-list"} %>
 
-<%= form_for :comment, url: article_comments_path(@article.id), html: { class: "form-group"} do |f| %>
-  <div class="form-group">
-    <%= f.label :body, "Submit a new comment" %><br>
-    <%= f.text_area :body, class: "form-control", rows: 5, cols: 115 %>
-  </div>
-         
-  <div class="form-group">
-    <%= f.submit "Submit", class: "btn btn-default"%>
-    <%= link_to 'Back', articles_path, class: "btn btn-default" %>
-  </div>
+  <%= form_for :comment, url: article_comments_path(@article.id), html: { class: "form-group"} do |f| %>
+    <div class="form-group">
+      <%= f.label :body, "Submit a new comment" %><br>
+      <%= f.text_area :body, class: "form-control", rows: 5, cols: 115 %>
+    </div>
+           
+    <div class="form-group">
+      <%= f.submit "Submit", class: "btn btn-default"%>
+      <%= link_to 'Back', articles_path, class: "btn btn-default" %>
+    </div>
+  <% end %>
+<%- else %>
+  <div class="well well-lg">You need to be signed in to leave comments</div>
 <% end %>
 
 
