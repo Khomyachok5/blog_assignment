@@ -1,6 +1,6 @@
 == README
 
-The blog app features functionality typically found in most blogging solutions. It allows users to create articles, post comments, while administrators possess privileges to create, update and delete articles. Administrators can also give admin privileges to other users.
+The blog app features functionality typically found in most blogging solutions. It allows users to view articles and post comments, while administrators possess privileges to create, update and delete articles. Administrators can also give admin privileges to other users.
 
 The further sections will guide you through deploying the app and setting up the blog:
 
