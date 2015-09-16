@@ -14,9 +14,13 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
 
-  get "/admin", to: "admins#manage", as: :admin
-  post "/invalidate", to: "admins#invalidate", as: "invalidate"
-  post "/promote", to: "admins#promote", as: "promote"
+  devise_scope :user do
+    authenticate :user do
+      get "/admin", to: "admins#manage", as: :admin
+      post "/invalidate", to: "admins#invalidate", as: "invalidate"
+      post "/promote", to: "admins#promote", as: "promote"
+    end
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
