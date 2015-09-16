@@ -22,6 +22,12 @@ Rails.application.routes.draw do
     end
   end
 
+  authenticate :user do
+    resources :subscriptions, only: [:create]
+  end
+
+  get '/unsubscribe', to: 'subscriptions#unsubscribe', as: 'cancel_subscription'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
